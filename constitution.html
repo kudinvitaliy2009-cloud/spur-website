@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конституція | Ш.Н.У.Р.</title>
+  <meta name="description" content="Офіційний текст Конституції Шкільної Народної Української Республіки." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green:  #2d7a2d;
+      --green2: #1e5c1e;
+      --yellow: #f5d442;
+      --yellow2:#e8c12a;
+      --blue:   #7ec8e3;
+      --white:  #fffef5;
+      --dark:   #1a2e1a;
+      --gray:   #4a5e4a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+    }
+
+    /* ══ НАВІГАЦІЯ ══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 70px;
+      background: rgba(29, 58, 29, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--yellow);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo .abbr {
+      font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 900;
+      color: var(--yellow); letter-spacing: 0.12em;
+    }
+    .nav-logo .full-name {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.07em;
+      line-height: 1.4; max-width: 190px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif; font-size: 0.73rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+
+    /* ══ HERO ══ */
+    .page-hero {
+      background: var(--green);
+      padding: 140px 2rem 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: var(--yellow);
+      clip-path: polygon(0 60%, 100% 20%, 100% 100%, 0% 100%);
+    }
+    .page-hero-content { position: relative; z-index: 2; }
+    .page-hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .page-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .page-hero p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: var(--blue);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ══ ЗМІСТ ══ */
+    .toc-section {
+      background: var(--green);
+      padding: 3rem 2rem 4rem;
+    }
+    .toc-inner {
+      max-width: 800px; margin: 0 auto;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .toc-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .toc-list li:last-child { border-bottom: none; }
+    .toc-list a {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.75rem 0;
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--yellow); }
+    .toc-num {
+      font-size: 0.65rem;
+      color: var(--yellow);
+      letter-spacing: 0.15em;
+      flex-shrink: 0;
+    }
+
+    /* ══ ОСНОВНИЙ КОНТЕНТ ══ */
+    .constitution-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* Преамбула */
+    .preamble {
+      background: #f9f7ec;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 4px 4px 0;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+    }
+    .preamble-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .preamble-label-en {
+      font-size: 0.65rem;
+      color: var(--blue);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      font-family: 'Cinzel', serif;
+    }
+    .preamble p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* Розділи */
+    .chapter {
+      margin-bottom: 4rem;
+      scroll-margin-top: 90px;
+    }
+    .chapter-header {
+      background: var(--green);
+      color: var(--white);
+      padding: 1.25rem 1.75rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .chapter-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .chapter-title-wrap { display: flex; flex-direction: column; gap: 0.2rem; }
+    .chapter-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .chapter-title-en {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+    }
+
+    /* Статті */
+    .article {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(45,122,45,0.12);
+    }
+    .article:last-child { border-bottom: none; }
+    .article-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .article p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--gray);
+    }
+    .article ol {
+      margin-top: 0.75rem;
+      padding-left: 1.5rem;
+    }
+    .article ol li {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Підпис */
+    .signature {
+      margin-top: 5rem;
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 2px solid var(--yellow);
+      border-radius: 4px;
+      background: #f9f7ec;
+    }
+    .signature-emblem { font-size: 3rem; margin-bottom: 1rem; }
+    .signature h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .signature p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* Кнопка назад */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      transition: gap 0.2s;
+    }
+    .back-btn:hover { gap: 0.75rem; }
+
+    /* ══ ФУТЕР ══ */
+    footer {
+      background: #111a11; padding: 2rem;
+      text-align: center; border-top: 2px solid var(--yellow);
+    }
+    .footer-logo {
+      font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 900;
+      color: var(--yellow); letter-spacing: 0.2em; margin-bottom: 0.5rem;
+    }
+    footer p { font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-logo .full-name { display: none; }
+      .nav-links { display: none; }
+      .constitution-body { padding: 3rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ НАВІГАЦІЯ ════ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="abbr">Ш.Н.У.Р.</span>
+    <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Про нас</a></li>
+    <li><a href="index.html#news">Новини</a></li>
+    <li><a href="index.html#government">Уряд</a></li>
+    <li><a href="index.html#constitution">Конституція</a></li>
+    <li><a href="index.html#contact">Контакти</a></li>
+  </ul>
+</nav>
+
+<!-- ════ HERO ════ -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-icon">📜</div>
+    <h1>Конституція</h1>
+    <p>Шкільна Народна Українська Республіка · S.P.U.R.</p>
+  </div>
+</div>
+
+<!-- ════ ЗМІСТ ════ -->
+<div class="toc-section">
+  <div class="toc-inner">
+    <p class="toc-title">📋 Зміст · Table of Contents</p>
+    <ul class="toc-list">
+      <li><a href="#preamble"><span class="toc-num">00</span> Преамбула · Preamble</a></li>
+      <li><a href="#ch1"><span class="toc-num">I</span> Загальні засади · General principles</a></li>
+      <li><a href="#ch2"><span class="toc-num">II</span> Права, свободи та обов'язки · Rights & Responsibilities</a></li>
+      <li><a href="#ch3"><span class="toc-num">III</span> Вибори та референдум · Elections and referendum</a></li>
+      <li><a href="#ch4"><span class="toc-num">IV</span> Сенат · Senate</a></li>
+      <li><a href="#ch5"><span class="toc-num">V</span> Гетьман · Hetman</a></li>
+      <li><a href="#ch6"><span class="toc-num">VI</span> Кабінет Міністрів · Government</a></li>
+      <li><a href="#ch7"><span class="toc-num">VII</span> Внесення змін · Amending the constitution</a></li>
+      <li><a href="#ch8"><span class="toc-num">VIII</span> Територія та самоврядування · Territory</a></li>
+      <li><a href="#ch9"><span class="toc-num">IX</span> Правосуддя · Judicial power</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════ ТЕКСТ КОНСТИТУЦІЇ ════ -->
+<div class="constitution-body">
+
+  <a href="index.html" class="back-btn">← Повернутись на головну</a>
+
+  <!-- ПРЕАМБУЛА -->
+  <div class="preamble" id="preamble">
+    <p class="preamble-label">Преамбула</p>
+    <p class="preamble-label-en">Preamble</p>
+    <p>Українська єдність споконвічна. Історія народу, символізм та пам'ять яка несеться від покоління до покоління тисячоліттям несе в собі ідею закладну предками, прагнення волі та свободи народу який завжди попри незгоди та складні періоди залишався тісно пов'язаним з Європою. Шкільна Народна Українська Республіка має на меті досягнення таких прав і вольностей народу всеукраїнському на теренах усієї Європи та світу щоб українець попри різні закони та культурні відмінності між країнами міг почувати себе як вдома говорити своєю мовою нести культури, навчатися жити, працювати користуючись тою мовою яку вважає рідною.</p>
+  </div>
+
+  <!-- РОЗДІЛ I -->
+  <div class="chapter" id="ch1">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ I</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Загальні засади</span>
+        <span class="chapter-title-en">General principles</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 1</p>
+      <p>Людина, її життя і здоров'я, честь і гідність, недоторканність і безпека визнаються в ШНУР найвищою соціальною цінністю. Права і свободи людини та їх гарантії визначають зміст і спрямованість діяльності держави. Держава відповідає перед людиною за свою діяльність. Утвердження і забезпечення прав і свобод людини є головним обов'язком держави.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 2</p>
+      <p>В ШНУР існує єдине громадянство. Підстави набуття і припинення громадянства ШНУР визначаються законом.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 3</p>
+      <p>Носієм суверенітету і єдиним джерелом влади в ШНУР є народ. Народ здійснює владу безпосередньо і через органи державної влади та органи місцевого самоврядування. Право визначати і змінювати конституційний лад в ШНУР належить виключно народові і не може бути узурповане державою, її органами або посадовими особами. Ніхто не може узурпувати державну владу.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 4</p>
+      <p>Державна влада в ШНУР здійснюється на засадах її поділу на законодавчу, виконавчу та судову. Органи законодавчої, виконавчої та судової влади здійснюють свої повноваження у встановлених цією Конституцією межах і відповідно до законів ШНУР.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ II -->
+  <div class="chapter" id="ch2">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ II</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Права, свободи та обов'язки людини і громадянина</span>
+        <span class="chapter-title-en">Freedom rights and responsibilities of a person and a citizen</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 5</p>
+      <p>Усі люди є вільні і рівні у своїй гідності та правах. Права і свободи людини є невідчужуваними та непорушними.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 6</p>
+      <p>Права і свободи людини і громадянина, закріплені цією Конституцією, не є вичерпними. Конституційні права і свободи гарантуються і не можуть бути скасовані. При прийнятті нових законів або внесенні змін до чинних законів не допускається звуження змісту та обсягу існуючих прав і свобод.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 7</p>
+      <p>Кожна людина має право на вільний розвиток своєї особистості, якщо при цьому не порушуються права і свободи інших людей, та має обов'язки перед суспільством, в якому забезпечується вільний і всебічний розвиток її особистості.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 8</p>
+      <p>Ми гарантуємо права та свободи такі як на життя, власне майно, недоторканість, право на самореалізацію та віросповідання, право на анонімність переписок, право на приватну власність, право голосувати на референдумах чи інших опитувань, право на мітинги чи бойкоти спрямовані на захист своїх прав чи свобод, право представляти ідеї чи звернення різним державним установам з метою покращення життя, право захищати власне життя, право недоторканості житла, право на свободу думки та слова, право об'єднуватися у групи, партії тощо.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 9</p>
+      <p>Кожна людина має права зазначені у Статті 8, проте лише за умови що дії не порушують прав іншої людини чи законодавства ШНУР.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 10</p>
+      <p>Шанування державних символів є обов'язком громадян.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 11</p>
+      <p>Кожен зобов'язаний не заподіювати шкоду природі, культурній спадщині, відшкодовувати завдані ним збитки.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 12</p>
+      <p>Кожен зобов'язаний сплачувати податки і збори в порядку і розмірах, встановлених законом.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 13</p>
+      <p>Кожен зобов'язаний неухильно додержуватися Конституції ШНУР та законів ШНУР, не посягати на права і свободи, честь і гідність інших людей.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ III -->
+  <div class="chapter" id="ch3">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ III</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Вибори та референдум</span>
+        <span class="chapter-title-en">Elections and referendum</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 14</p>
+      <p>Народне виявлення здійснюється через голосування, референдуми та інші форми безпосередньої демократії.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 15</p>
+      <p>Право голосування мають громадяни які досягли віку понад 15 років або у випадку надання права Верховною Комісією. Не мають права голосу ті кого Верховна Комісія визнала недієздатними.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 16</p>
+      <p>Вибори до органів влади відбуваються на основі загального рівного, прямого і таємного голосування. Виборцям гарантується вільне волевиявлення.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 17</p>
+      <p>Всенародний референдум призначений Сенатом або Прем'єр-міністром відповідно до їх повноважень, встановлених у розділах IV і V. Всенародний референдум проголошується за ініціативою народу на вимогу більш ніж половини населення, які мають право голосу.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ IV -->
+  <div class="chapter" id="ch4">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ IV</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Сенат</span>
+        <span class="chapter-title-en">Senate</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 18</p>
+      <p>Єдиним органом законодавчої влади в ШНУР є її парламент – Сенат.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 19</p>
+      <p>Конституційний склад ради – двадцять народних депутатів, які обираються шляхом таємного голосування строком на рік. Народним депутатом може стати людина яка на день проведення виборів досягла 16 років, має право голосу та проживає на території ЄС та України більш ніж 1 рік. Не може бути обраним в депутати людина яка скоювала злочини або мала судимість. Повноваження визначає конституція.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 20</p>
+      <p>Чергові вибори проводяться в першу неділю літа 1 року повноважень Сенату. Позачергові вибори призначаються у випадку недієздатності парламенту Прем'єр-міністром і проводяться в період одного тижня з дня публікації рішення про припинення повноважень діючого парламенту. Порядок проведення виборів встановлюється законом. Апелювати рішення Прем'єр-міністра може Верховна Комісія.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 21</p>
+      <p>Депутати здійснюють свої повноваження на постійній основі та бажано спрямовують свій час на законодавчу роботу.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 22</p>
+      <p>Перед вступом на посаду народні депутати складають перед Сенатом таку присягу:</p>
+      <p style="margin-top:1rem; padding: 1rem 1.5rem; border-left: 3px solid var(--yellow); font-style: italic; background: #f9f7ec; border-radius: 0 4px 4px 0;">«Присягаю на вірність. Зобов'язуюсь усіма своїми діями боронити суверенітет і незалежність, дбати про благо Вітчизни і добробут Українського народу. Присягаю додержуватися Конституції та законів, виконувати свої обов'язки в інтересах усіх співвітчизників».</p>
+      <p style="margin-top:0.75rem;">Повноваження починаються з моменту складення присяги.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 23</p>
+      <p>Повноваження народних депутатів припиняються одночасно з припиненням повноважень Сенату. Повноваження народного депутата припиняються достроково у разі:</p>
+      <ol>
+        <li>складення повноважень за його особистою заявою;</li>
+        <li>набрання законної сили обвинувальним вироком щодо нього;</li>
+        <li>визнання його судом недієздатним або безвісно відсутнім;</li>
+        <li>припинення його громадянства;</li>
+        <li>якщо протягом двадцяти днів з дня виникнення обставин, які призводять до порушення вимог щодо несумісності депутатського мандата з іншими видами діяльності, ці обставини ним не усунуто;</li>
+        <li>не входження народного депутата, обраного від політичної партії, до складу депутатської фракції цієї політичної партії або виходу народного депутата із складу такої фракції;</li>
+        <li>його смерті.</li>
+      </ol>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 24</p>
+      <p>Повноваження Сенату:</p>
+      <ol>
+        <li>внесення змін до конституції;</li>
+        <li>призначення всенародного референдуму в порядку Статті 17;</li>
+        <li>прийняття законів;</li>
+        <li>контроль за державним бюджетом: визначення, затвердження, внесення змін до нього, контроль за використанням, прийняття рішень щодо звіту;</li>
+        <li>визначення засад внутрішньої та зовнішньої політики;</li>
+        <li>затвердження загальнодержавних програм економічного, науково-технічного, соціального, національно-культурного розвитку, охорони довкілля;</li>
+        <li>призначення виборів Гетьмана у строки, передбачені цією Конституцією в разі відсутності Гетьмана;</li>
+        <li>заслуховування щорічних та позачергових послань Прем'єр-міністра про внутрішнє і зовнішнє становище;</li>
+        <li>усунення Гетьмана з поста в порядку особливої процедури (імпічменту), встановленому Конституцією, Стаття 28;</li>
+        <li>розглядання і прийняття рішення щодо схвалення Програми діяльності Кабінету Міністрів;</li>
+        <li>здійснення контролю за діяльністю Кабінету Міністрів відповідно до цієї Конституції та закону;</li>
+        <li>здійснення комунікації та співпраці разом з Кабінетом Міністрів;</li>
+        <li>прийняття регламенту Сенату;</li>
+        <li>призначення на посади та звільнення з посад Голови та інших членів Рахункової палати;</li>
+        <li>призначення на посади та звільнення посади голови Національного Банку за поданням Прем'єр-міністра;</li>
+        <li>призначення на посаду голови Верховної Комісії за поданням Гетьмана;</li>
+        <li>встановлення державних символів;</li>
+        <li>призначення чергових та позачергових виборів органів місцевого самоврядування;</li>
+        <li>здійснення парламентського контролю у межах визначених конституцією;</li>
+        <li>призначення та звільнення з посади спікера парламенту.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ V -->
+  <div class="chapter" id="ch5">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ V</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Гетьман</span>
+        <span class="chapter-title-en">Hetman</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 25</p>
+      <p>Гетьман ШНУР є главою держави, очолює 3 гілки влади і виступає від її імені. Гетьман є гарантом державного суверенітету, територіальної цілісності, додержання Конституції, прав і свобод людини і громадянина.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 26</p>
+      <p>Гетьман обирається парламентом на «Козацькій раді» шляхом голосування безстроково. Гетьманом може бути обраний громадянин, який досяг сімнадцяти років, має право голосу та володіє державною мовою. Гетьман не може мати іншого представницького мандата. У разі дострокового припинення повноважень Гетьмана вибори проводяться в період тридцяти днів з дня припинення повноважень.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 27</p>
+      <p>Гетьман:</p>
+      <ol>
+        <li>ставить підпис під законом;</li>
+        <li>вітає народ;</li>
+        <li>підписує міжнародні договори ухвалені парламентом — обов'язково;</li>
+        <li>видає державні нагороди та надає титули;</li>
+        <li>має право закінчувати війну або оголошувати — за згодою парламенту;</li>
+        <li>бере участь в міжнародній політиці разом з Кабінетом Міністрів;</li>
+        <li>консультує Прем'єр-міністра у будь-яких питаннях;</li>
+        <li>кожен тиждень зустрічається на засіданні Кабінету Міністрів;</li>
+        <li>як голова виконавчої влади має право писати законопроекти та вносити правки;</li>
+        <li>формально надає громадянство після затвердження спеціалізованим органом.</li>
+      </ol>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 28</p>
+      <p>Рішення про усунення Гетьмана з поста приймається Сенатом після перевірки справи Верховною Комісією і отримання його висновку щодо додержання конституційної процедури.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ VI -->
+  <div class="chapter" id="ch6">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ VI</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Кабінет Міністрів</span>
+        <span class="chapter-title-en">Government</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 29</p>
+      <p>Кабінет Міністрів є вищим органом у системі органів виконавчої влади. Кабінет Міністрів відповідальний перед Гетьманом і Сенатом, підконтрольний і підзвітний Сенату у межах, передбачених цією Конституцією. Кабінет Міністрів у своїй діяльності керується цією Конституцією та законами, а також постановами Сенату, прийнятими відповідно до Конституції.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 30</p>
+      <p>До складу Кабінету Міністрів входять Прем'єр-міністр. Прем'єр-міністр призначається Сенатом. Кандидатуру для призначення на посаду Прем'єр-міністра вносить коаліція депутатських фракцій у Сенаті, або депутатська фракція, до складу якої входить більшість народних депутатів від конституційного складу Сенату. Міністри призначаються Сенатом за поданням Прем'єр-міністра. Прем'єр-міністр керує роботою Кабінету Міністрів, спрямовує її на виконання програми діяльності Кабінету Міністрів, схваленої Сенатом.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 31</p>
+      <p>Кабінет Міністрів:</p>
+      <ol>
+        <li>забезпечує державний суверенітет і економічну самостійність, здійснення внутрішньої і зовнішньої політики держави, виконання Конституції;</li>
+        <li>вживає заходів щодо забезпечення прав і свобод людини і громадянина;</li>
+        <li>забезпечує проведення фінансової, цінової, інвестиційної та податкової політики;</li>
+        <li>здійснює політику у сферах праці й зайнятості населення, соціального захисту, освіти, науки і культури, охорони природи, екологічної безпеки і природокористування;</li>
+        <li>забезпечує рівні умови розвитку всіх форм власності;</li>
+        <li>здійснює управління об'єктами державної власності відповідно до закону;</li>
+        <li>розробляє проект закону про Державний бюджет і забезпечує виконання затвердженого Сенатом Державного бюджету, подає Сенату звіт про його виконання;</li>
+        <li>організовує і забезпечує здійснення зовнішньоекономічної діяльності;</li>
+        <li>спрямовує і координує роботу міністерств, інших органів виконавчої влади;</li>
+        <li>утворює, реорганізовує та ліквідовує відповідно до закону міністерства та інші центральні органи виконавчої влади;</li>
+        <li>здійснює інші повноваження, визначені Конституцією та законами.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ VII -->
+  <div class="chapter" id="ch7">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ VII</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Внесення змін до Конституції</span>
+        <span class="chapter-title-en">Amending the constitution</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 32</p>
+      <p>Законопроект про внесення змін до Конституції може бути внесений лише Прем'єр-міністром або не менш як половиною парламенту при умові термінової зміни спричиненій різкій зміні у геополітиці держави або у зв'язку з воєнним станом.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 33</p>
+      <p>Зміни до конституції не можуть бути внесені якщо вони передбачають скасування чи обмеження прав і свобод людини і громадянина або якщо вони спрямовані на ліквідацію ШНУР.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 34</p>
+      <p>Законопроект про внесення змін до Конституції ШНУР розглядається Сенатом за наявності висновку Верховної Комісії щодо відповідності законопроекту вимогам цієї Конституції.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ VIII -->
+  <div class="chapter" id="ch8">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ VIII</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Територія та самоврядування</span>
+        <span class="chapter-title-en">Territory and self-government</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 35</p>
+      <p>Територія ШНУР офіційно є усе нерухоме майно що належить громадянам ШНУР таких як будинки, квартири, земельні ділянки тощо. Уряд ШНУР не має територіальних претензій до жодної з країн ЄС та країн кандидатів на вступ до ЄС.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 36</p>
+      <p>ШНУР має на меті утворення окремих територіальних одиниць шляхом купівлі території у держави власника, не порушуючи законів країни власника. Закони та влада ШНУР розповсюджуються лише на її громадян та працюють лише на території підвладною ШНУР.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 37</p>
+      <p>Особливий статус надається місту Ювяскуля як центр засідання Кабінету Міністрів. Згідно якому українська громада отримує статус меншини у випадку схвалення рішення фінською владою. Також місто стає центром прийняття рішень та оплотом української діаспори закордоном.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 38</p>
+      <p>Громади за власною ініціативою та при схваленні місцевої влади можуть створювати органи самоврядування такі як сіль-ради та міські-ради які підпорядковуються та діють в рамках законів країни проживання та ШНУР.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 39</p>
+      <p>Матеріальною і фінансовою основою місцевого самоврядування є рухоме і нерухоме майно, доходи місцевих бюджетів, інші кошти, земля, природні ресурси, що є у власності територіальних громад. Територіальні громади можуть об'єднувати на договірних засадах об'єкти комунальної власності, а також кошти бюджетів для виконання спільних проектів. Держава бере участь у формуванні доходів бюджетів місцевого самоврядування та фінансово підтримує місцеве самоврядування.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 40</p>
+      <p>Органи місцевого самоврядування в межах повноважень, визначених законом, приймають рішення, які є обов'язковими до виконання на відповідній території. Рішення органів місцевого самоврядування з мотивів їх невідповідності Конституції чи законам ШНУР зупиняються у встановленому законом порядку з одночасним зверненням до суду.</p>
+    </div>
+  </div>
+
+  <!-- РОЗДІЛ IX -->
+  <div class="chapter" id="ch9">
+    <div class="chapter-header">
+      <span class="chapter-num">РОЗДІЛ IX</span>
+      <div class="chapter-title-wrap">
+        <span class="chapter-title">Правосуддя</span>
+        <span class="chapter-title-en">Judicial power</span>
+      </div>
+    </div>
+
+    <div class="article">
+      <p class="article-num">Стаття 41</p>
+      <p>Мікронація за визначенням і за статусом не може самостійно здійснювати правосуддя. Проте республіка делегує вирішувати: юридичні суперечки, корупційні справи та адміністративні порушення легкого та місцевого характеру судам. Суди мають працювати відповідно до Римського статуту Міжнародного кримінального суду, відповідно до принципів справедливості та неупередженості.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 42</p>
+      <p>Склад судової влади визначається Сенатом відповідно до потреб республіки в період скликання цього Сенату. Проте основними посадовцями які бажано мають бути є Голова Верховної Комісії, Генеральний прокурор та Антикорупційний суддя. Республіка не може діяти без жодного представника судової влади.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 43</p>
+      <p>За можливості судді обираються окремою комісією бажано із залученням міжнародних експертів. У разі неможливості суддю призначає Сенат. Відповідно право бути обраним має будь який громадянин, якщо відповідає всім вимогам які висуваються до кандидата. Подати кандидата на посаду може будь який сенатор.</p>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 44</p>
+      <p>До повноважень судової влади належить:</p>
+      <ol>
+        <li>розглядати адміністративні порушення в межах республіки;</li>
+        <li>розглядати порушення влади у разі незаконності та неконституційності її дій;</li>
+        <li>розглядати корупційні справи;</li>
+        <li>позбавляти громадянства у разі державної зради, корупції чи вбивства іншої людини;</li>
+        <li>передавати справи до правоохоронних органів держави на території якої сталося порушення;</li>
+        <li>скасовувати рішення Сенату чи уряду у разі їх незаконності чи неконституційності.</li>
+      </ol>
+    </div>
+    <div class="article">
+      <p class="article-num">Стаття 45</p>
+      <p>Судову владу забезпечує держава з податків. Кількість грошей виділена на утримання суддів визначається державним бюджетом який затверджується в Сенаті.</p>
+    </div>
+  </div>
+
+  <!-- ПІДПИС -->
+  <div class="signature">
+    <div class="signature-emblem">⚜</div>
+    <h3>Шкільна Народна Українська Республіка</h3>
+    <p>S.P.U.R. · Конституція · Редакція 2025</p>
+  </div>
+
+</div>
+
+<!-- ════ ФУТЕР ════ -->
+<footer>
+  <div class="footer-logo">Ш.Н.У.Р.</div>
+  <p>© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
+</footer>
+
+</body>
+</html>
