@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Громадянство | Ш.Н.У.Р.</title>
+  <meta name="description" content="Подати заявку на громадянство Шкільної Народної Української Республіки." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:#2d7a2d; --green2:#1e5c1e; --yellow:#f5d442;
+      --blue:#7ec8e3; --white:#fffef5; --dark:#1a2e1a; --gray:#4a5e4a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--white); color: var(--dark); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 70px;
+      background: rgba(29,58,29,0.97); backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--yellow);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo .abbr { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 900; color: var(--yellow); letter-spacing: 0.12em; }
+    .nav-logo .full-name { font-family: 'Cinzel', serif; font-size: 0.62rem; color: rgba(255,255,255,0.5); line-height: 1.4; max-width: 190px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.73rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--yellow); }
+
+    .page-hero { background: var(--green); padding: 140px 2rem 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: var(--yellow); clip-path: polygon(0 60%, 100% 20%, 100% 100%, 0% 100%); }
+    .page-hero-content { position: relative; z-index: 2; }
+    .page-hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem,5vw,4rem); font-weight: 900; color: var(--white); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .page-hero p { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--white); letter-spacing: 0.2em; text-transform: uppercase; background: rgba(0,0,0,0.2); display: inline-block; padding: 0.4rem 1.2rem; border-radius: 2px; margin-top: 0.5rem; }
+
+    .page-body { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+
+    .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; margin-bottom: 3rem; transition: gap 0.2s; }
+    .back-btn:hover { gap: 0.75rem; }
+
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.4rem,3vw,2rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-divider { width: 60px; height: 3px; background: var(--yellow); margin-bottom: 2.5rem; }
+
+    /* Права та обов'язки */
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 5rem; }
+
+    .rights-card { border-radius: 4px; overflow: hidden; }
+    .rights-card-header { padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .rights-card-header.green { background: var(--green); }
+    .rights-card-header.yellow { background: var(--yellow); }
+    .rights-card-icon { font-size: 1.5rem; }
+    .rights-card-title { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700; }
+    .rights-card-header.green .rights-card-title { color: var(--white); }
+    .rights-card-header.yellow .rights-card-title { color: var(--dark); }
+    .rights-card-body { background: #f9f7ec; padding: 1.5rem; }
+    .rights-list { list-style: none; }
+    .rights-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; line-height: 1.7; color: var(--gray); margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(45,122,45,0.1); }
+    .rights-list li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .rights-list li::before { content: '→'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+
+    /* Процес */
+    .process { background: var(--green); border-radius: 4px; padding: 3rem; margin-bottom: 5rem; }
+    .process-title { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--yellow); margin-bottom: 2rem; }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
+    .process-step { text-align: center; }
+    .step-num { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; color: var(--yellow); display: block; margin-bottom: 0.5rem; }
+    .step-title { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.65); }
+
+    /* Форма */
+    .form-wrap { background: #f9f7ec; border-radius: 4px; padding: 3rem; }
+    .form-wrap-title { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .form-wrap-subtitle { font-size: 0.88rem; color: var(--gray); margin-bottom: 2.5rem; }
+    .form-section-title { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green); border-left: 3px solid var(--yellow); padding-left: 0.75rem; margin-bottom: 1.75rem; }
+    .form-group { margin-bottom: 1.75rem; }
+    .form-label { display: block; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+    .form-label span { color: #c0392b; }
+    .form-input, .form-textarea { width: 100%; padding: 0.85rem 1rem; border: 2px solid rgba(45,122,45,0.2); border-radius: 2px; font-family: 'Raleway', sans-serif; font-size: 0.95rem; color: var(--dark); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--green); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-hint { font-size: 0.78rem; color: var(--gray); margin-top: 0.4rem; }
+    .form-divider { border: none; border-top: 1px solid rgba(45,122,45,0.15); margin: 2.5rem 0; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
+    .checkbox-group input { margin-top: 3px; accent-color: var(--green); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .checkbox-group label { font-size: 0.9rem; line-height: 1.6; color: var(--gray); cursor: pointer; }
+    .btn-submit { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 3rem; border-radius: 2px; background: var(--green); color: var(--white); border: 2px solid var(--green); cursor: pointer; transition: all 0.25s; margin-top: 2rem; width: 100%; }
+    .btn-submit:hover { background: transparent; color: var(--green); }
+
+    footer { background: #111a11; padding: 2rem; text-align: center; border-top: 2px solid var(--yellow); }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 900; color: var(--yellow); letter-spacing: 0.2em; margin-bottom: 0.5rem; }
+    footer p { font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-logo .full-name { display: none; }
+      .nav-links { display: none; }
+      .page-body { padding: 3rem 1.5rem 4rem; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .process { padding: 2rem; }
+      .form-wrap { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="abbr">Ш.Н.У.Р.</span>
+    <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Про нас</a></li>
+    <li><a href="index.html#news">Новини</a></li>
+    <li><a href="index.html#government">Уряд</a></li>
+    <li><a href="constitution.html">Конституція</a></li>
+    <li><a href="index.html#contact">Контакти</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-icon">🪪</div>
+    <h1>Громадянство</h1>
+    <p>Шкільна Народна Українська Республіка · S.P.U.R.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <a href="index.html" class="back-btn">← Повернутись на головну</a>
+
+  <!-- Права та обов'язки -->
+  <p class="section-label">Громадянство</p>
+  <h2 class="section-title">Права та обов'язки</h2>
+  <div class="section-divider"></div>
+
+  <div class="rights-grid">
+    <div class="rights-card">
+      <div class="rights-card-header green">
+        <span class="rights-card-icon">⚖️</span>
+        <span class="rights-card-title">Права громадянина</span>
+      </div>
+      <div class="rights-card-body">
+        <ul class="rights-list">
+          <li>Право голосу на виборах та референдумах</li>
+          <li>Право балотуватись на державні посади</li>
+          <li>Право на захист з боку держави</li>
+          <li>Право на свободу слова та думки</li>
+          <li>Право на приватну власність</li>
+          <li>Право на мирні мітинги та бойкоти</li>
+          <li>Право на анонімність переписок</li>
+          <li>Право на свободу віросповідання</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rights-card">
+      <div class="rights-card-header yellow">
+        <span class="rights-card-icon">📋</span>
+        <span class="rights-card-title">Обов'язки громадянина</span>
+      </div>
+      <div class="rights-card-body">
+        <ul class="rights-list">
+          <li>Дотримуватись Конституції та законів Ш.Н.У.Р.</li>
+          <li>Шанувати державні символи</li>
+          <li>Поважати права інших громадян</li>
+          <li>Сплачувати податки встановлені законом</li>
+          <li>Не завдавати шкоди природі та культурній спадщині</li>
+          <li>Діяти в інтересах держави та суспільства</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Процес отримання -->
+  <div class="process">
+    <p class="process-title">📜 Як отримати громадянство?</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <p class="step-title">Заповни форму</p>
+        <p class="step-desc">Заповни заявку нижче на цій сторінці вказавши свої дані та мотивацію</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <p class="step-title">Розгляд</p>
+        <p class="step-desc">Уряд Ш.Н.У.Р. розглядає заявку і приймає рішення</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <p class="step-title">Відповідь</p>
+        <p class="step-desc">Ти отримаєш відповідь на вказаний email з рішенням</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <p class="step-title">Затвердження</p>
+        <p class="step-desc">Гетьман офіційно надає громадянство після схвалення</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Форма -->
+  <div class="form-wrap">
+    <p class="form-wrap-title">Заявка на громадянство</p>
+    <p class="form-wrap-subtitle">Заповніть форму нижче. Ваша заявка буде розглянута урядом Ш.Н.У.Р. і відповідь надійде на вказаний email.</p>
+
+    <form action="https://formsubmit.co/spurofficial2022@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Нова заявка на громадянство Ш.Н.У.Р." />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://spurmicronation.netlify.app/citizenship.html" />
+
+      <p class="form-section-title">Особисті дані</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="firstName">Ім'я <span>*</span></label>
+          <input class="form-input" type="text" id="firstName" name="Ім'я" required placeholder="Ваше ім'я" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lastName">Прізвище <span>*</span></label>
+          <input class="form-input" type="text" id="lastName" name="Прізвище" required placeholder="Ваше прізвище" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email <span>*</span></label>
+        <input class="form-input" type="email" id="email" name="Email" required placeholder="your@email.com" />
+        <p class="form-hint">На цей email ми надішлемо відповідь щодо вашої заявки</p>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="age">Вік <span>*</span></label>
+          <input class="form-input" type="number" id="age" name="Вік" required min="1" max="100" placeholder="Ваш вік" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="country">Країна проживання <span>*</span></label>
+          <input class="form-input" type="text" id="country" name="Країна" required placeholder="Наприклад: Фінляндія" />
+        </div>
+      </div>
+
+      <hr class="form-divider" />
+      <p class="form-section-title">Додаткова інформація</p>
+
+      <div class="form-group">
+        <label class="form-label" for="languages">Якими мовами володієте?</label>
+        <input class="form-input" type="text" id="languages" name="Мови" placeholder="Наприклад: українська, англійська, фінська" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="motivation">Чому хочете стати громадянином Ш.Н.У.Р.? <span>*</span></label>
+        <textarea class="form-textarea" id="motivation" name="Мотивація" required placeholder="Розкажіть про свою мотивацію..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="skills">Які навички можете запропонувати державі?</label>
+        <textarea class="form-textarea" id="skills" name="Навички" placeholder="Наприклад: програмування, дипломатія, дизайн..." style="min-height:90px;"></textarea>
+      </div>
+
+      <hr class="form-divider" />
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="agreeConstitution" name="Конституція" value="Так" required />
+        <label for="agreeConstitution">Я ознайомився з <a href="constitution.html" style="color:var(--green);">Конституцією Ш.Н.У.Р.</a> і зобов'язуюсь її дотримуватись <span style="color:#c0392b;">*</span></label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="agreeValues" name="Цінності" value="Так" required />
+        <label for="agreeValues">Я поважаю цінності єдності, свободи та міжнародного співробітництва Ш.Н.У.Р. <span style="color:#c0392b;">*</span></label>
+      </div>
+
+      <button type="submit" class="btn-submit">⚜ Подати заявку на громадянство</button>
+    </form>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Ш.Н.У.Р.</div>
+  <p>© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
+</footer>
+
+</body>
+</html>
