@@ -340,6 +340,7 @@
     <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
   </a>
   <ul class="nav-links">
+    <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
     <li><a href="#about">Про нас</a></li>
     <li><a href="#news">Новини</a></li>
     <li><a href="#government">Уряд</a></li>
@@ -383,9 +384,9 @@
       </svg>
     </div>
 
-    <h1 class="hero-title">Шкільна Народна Українська Республіка</h1>
+    <h1 class="hero-title" data-uk="Шкільна Народна Українська Республіка" data-en="School People's Ukrainian Republic">Шкільна Народна Українська Республіка</h1>
     <span class="hero-abbr">Ш.Н.У.Р.</span>
-    <p class="hero-sub">Єдність · Свобода · Міжнародне Співробітництво</p>
+    <p class="hero-sub" data-uk="Єдність · Свобода · Міжнародне Співробітництво" data-en="Unity · Freedom · International Cooperation">Єдність · Свобода · Міжнародне Співробітництво</p>
 
     <div class="hero-buttons">
       <a href="#about" class="btn btn-primary">Дізнатись більше</a>
@@ -402,8 +403,8 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-label">Наша Держава</p>
-        <h2 class="section-title">Хто ми такі?</h2>
+        <p class="section-label" data-uk="Наша Держава" data-en="Our State">Наша Держава</p>
+        <h2 class="section-title" data-uk="Хто ми такі?" data-en="Who are we?">Хто ми такі?</h2>
         <div class="section-divider"></div>
 
         <p class="lead">
@@ -429,7 +430,7 @@
             <span class="stat-label">Рік заснування</span>
           </div>
           <div class="stat">
-            <span class="stat-num">15</span>
+            <span class="stat-num">16</span>
             <span class="stat-label">Громадяни</span>
           </div>
           <div class="stat">
@@ -451,8 +452,8 @@
 <!-- ════ НОВИНИ ════ -->
 <section id="news">
   <div class="section-inner">
-    <p class="section-label">Офіційні повідомлення</p>
-    <h2 class="section-title">Останні новини</h2>
+    <p class="section-label" data-uk="Офіційні повідомлення" data-en="Official announcements">Офіційні повідомлення</p>
+    <h2 class="section-title" data-uk="Останні новини" data-en="Latest news">Останні новини</h2>
     <div class="section-divider"></div>
 
     <div class="news-grid">
@@ -470,8 +471,8 @@
 <!-- ════ УРЯД ════ -->
 <section id="government">
   <div class="section-inner">
-    <p class="section-label">Керівництво держави</p>
-    <h2 class="section-title">Уряд Ш.Н.У.Р.</h2>
+    <p class="section-label" data-uk="Керівництво держави" data-en="State leadership">Керівництво держави</p>
+    <h2 class="section-title" data-uk="Уряд Ш.Н.У.Р." data-en="S.P.U.R. Government">Уряд Ш.Н.У.Р.</h2>
     <div class="section-divider"></div>
 
     <!-- ГЕТЬМАН -->
@@ -654,4 +655,16 @@
 
 <!-- ════ ФУТЕР ════ -->
 <footer>
- 
+
+<script>
+  let currentLang = 'uk';
+  function toggleLang() {
+    currentLang = currentLang === 'uk' ? 'en' : 'uk';
+    document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+  }
+</script>
+ </body>
+</html>
