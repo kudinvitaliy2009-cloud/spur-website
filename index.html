@@ -322,7 +322,7 @@
 
     /* ══ МОБІЛЬНА ══ */
     @media (max-width: 768px) {
-      #langBtn { font-size: 0.65rem; padding: 0.25rem 0.5rem; }
+      #langBtn { display: block !important; }
       nav { padding: 0 1.25rem; }
       .nav-logo .full-name { display: none; }
       .nav-links { display: none; }
@@ -341,7 +341,7 @@
     <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
   </a>
   <ul class="nav-links">
-    <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
+    
     <li><a href="#about">Про нас</a></li>
     <li><a href="#news">Новини</a></li>
     <li><a href="#government">Уряд</a></li>
@@ -350,6 +350,7 @@
     <li><a href="relations.html" >Відносини</a></li>
     <li><a href="#contact">Контакти</a></li>
   </ul>
+  <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
 </nav>
 
 
