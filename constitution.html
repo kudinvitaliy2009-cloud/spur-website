@@ -1,4 +1,4 @@
-78<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
@@ -81,9 +81,14 @@
     .page-hero p {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
-      color: var(--blue);
+      color: var(--dark);
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      background: rgba(255,255,255,0.85);
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      margin-top: 0.5rem
     }
 
     /* ══ ЗМІСТ ══ */
@@ -285,6 +290,16 @@
     }
   </style>
 </head>
+<script>
+  let currentLang = 'uk';
+  function toggleLang() {
+    currentLang = currentLang === 'uk' ? 'en' : 'uk';
+    document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+  }
+</script>
 <body>
 
 <!-- ════ НАВІГАЦІЯ ════ -->
@@ -294,12 +309,15 @@
     <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#about">Про нас</a></li>
-    <li><a href="index.html#news">Новини</a></li>
-    <li><a href="index.html#government">Уряд</a></li>
-    <li><a href="index.html#constitution">Конституція</a></li>
-    <li><a href="index.html#contact">Контакти</a></li>
+    <li><a href="index.html#about" data-uk="Про нас" data-en="About us">Про нас</a></li>
+    <li><a href="index.html#news" data-uk="Новини" data-en="News">Новини</a></li>
+    <li><a href="index.html#government" data-uk="Уряд" data-en="Government">Уряд</a></li>
+    <li><a href="constitution.html" data-uk="Конституція" data-en="Constitution">Конституція</a></li>
+    <li><a href="citizenship.html" data-uk="Громадянство" data-en="Citizenship">Громадянство</a></li>
+    <li><a href="relations.html" data-uk="Відносини" data-en="Relations">Відносини</a></li>
+    <li><a href="index.html#contact" data-uk="Контакти" data-en="Contacts">Контакти</a></li>
   </ul>
+  <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
 </nav>
 
 <!-- ════ HERO ════ -->
