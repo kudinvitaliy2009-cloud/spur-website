@@ -109,11 +109,29 @@
 </head>
 <script>
   let currentLang = 'uk';
+  
+  const placeholders = {
+    firstName: { uk: "Ваше ім'я", en: "Your first name" },
+    lastName: { uk: "Ваше прізвище", en: "Your last name" },
+    email: { uk: "your@email.com", en: "your@email.com" },
+    age: { uk: "Ваш вік", en: "Your age" },
+    country: { uk: "Наприклад: Фінляндія", en: "For example: Finland" },
+    languages: { uk: "Наприклад: українська, англійська, фінська", en: "For example: Ukrainian, English, Finnish" },
+    motivation: { uk: "Розкажіть про свою мотивацію...", en: "Tell us about your motivation..." },
+    skills: { uk: "Наприклад: програмування, дипломатія, дизайн...", en: "For example: programming, diplomacy, design..." }
+  };
+
   function toggleLang() {
     currentLang = currentLang === 'uk' ? 'en' : 'uk';
     document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    
     document.querySelectorAll('[data-uk]').forEach(el => {
       el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+
+    Object.keys(placeholders).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.placeholder = placeholders[id][currentLang];
     });
   }
 </script>
