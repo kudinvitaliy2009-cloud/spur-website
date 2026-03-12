@@ -107,6 +107,16 @@
     }
   </style>
 </head>
+<script>
+  let currentLang = 'uk';
+  function toggleLang() {
+    currentLang = currentLang === 'uk' ? 'en' : 'uk';
+    document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+  }
+</script>
 <body>
 
 <nav>
@@ -115,47 +125,49 @@
     <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#about">Про нас</a></li>
-    <li><a href="index.html#news">Новини</a></li>
-    <li><a href="index.html#government">Уряд</a></li>
-    <li><a href="constitution.html">Конституція</a></li>
-    <li><a href="relations.html">Відносини</a></li>
-    <li><a href="index.html#contact">Контакти</a></li>
+    <li><a href="index.html#about" data-uk="Про нас" data-en="About us">Про нас</a></li>
+    <li><a href="index.html#news" data-uk="Новини" data-en="News">Новини</a></li>
+    <li><a href="index.html#government" data-uk="Уряд" data-en="Government">Уряд</a></li>
+    <li><a href="constitution.html" data-uk="Конституція" data-en="Constitution">Конституція</a></li>
+    <li><a href="citizenship.html" data-uk="Громадянство" data-en="Citizenship">Громадянство</a></li>
+    <li><a href="relations.html" data-uk="Відносини" data-en="Relations">Відносини</a></li>
+    <li><a href="index.html#contact" data-uk="Контакти" data-en="Contacts">Контакти</a></li>
   </ul>
+  <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-content">
     <div class="page-hero-icon">🪪</div>
-    <h1>Громадянство</h1>
-    <p>Шкільна Народна Українська Республіка · S.P.U.R.</p>
+    <h1 data-uk="Громадянство" data-en="Citizenship">Громадянство</h1>
+    <p data-uk="Шкільна Народна Українська Республіка" data-en="School People's Ukrainian Republic">Шкільна Народна Українська Республіка</p>
   </div>
 </div>
 
 <div class="page-body">
-  <a href="index.html" class="back-btn">← Повернутись на головну</a>
+  <a href="index.html" class="back-btn" data-uk="← Повернутись на головну" data-en="← Back to home page">← Повернутись на головну</a>
 
   <!-- Права та обов'язки -->
-  <p class="section-label">Громадянство</p>
-  <h2 class="section-title">Права та обов'язки</h2>
+  <p class="section-label" data-uk="Громадянство" data-en="Citizenship">Громадянство</p>
+  <h2 class="section-title" data-uk="Права та обов'язки" data-en="Rights and responsibilities">Права та обов'язки</h2>
   <div class="section-divider"></div>
 
   <div class="rights-grid">
     <div class="rights-card">
       <div class="rights-card-header green">
         <span class="rights-card-icon">⚖️</span>
-        <span class="rights-card-title">Права громадянина</span>
+        <span class="rights-card-title" data-uk="Права громадянина" data-en="Rights of a citizen">Права громадянина</span>
       </div>
       <div class="rights-card-body">
         <ul class="rights-list">
-          <li>Право голосу на виборах та референдумах</li>
-          <li>Право балотуватись на державні посади</li>
-          <li>Право на захист з боку держави</li>
-          <li>Право на свободу слова та думки</li>
-          <li>Право на приватну власність</li>
-          <li>Право на мирні мітинги та бойкоти</li>
-          <li>Право на анонімність переписок</li>
-          <li>Право на свободу віросповідання</li>
+          <li data-uk="Право голосу на виборах та референдумах" data-en="Right to vote in elections and referendums">Право голосу на виборах та референдумах</li>
+          <li data-uk="Право балотуватись на державні посади" data-en="Right to run for state positions">Право балотуватись на державні посади</li>
+          <li data-uk="Право на захист з боку держави" data-en="Right to protection by the state">Право на захист з боку держави</li>
+          <li data-uk="Право на свободу слова та думки" data-en="Right to freedom of speech and thought">Право на свободу слова та думки</li>
+          <li data-uk="Право на приватну власність" data-en="Right to private property">Право на приватну власність</li>
+          <li data-uk="Право на мирні мітинги та бойкоти" data-en="Right to peaceful rallies and boycotts">Право на мирні мітинги та бойкоти</li>
+          <li data-uk="Право на анонімність переписок" data-en="Right to anonymity of correspondence">Право на анонімність переписок</li>
+          <li data-uk="Право на свободу віросповідання" data-en="Right to freedom of religion">Право на свободу віросповідання</li>
         </ul>
       </div>
     </div>
@@ -163,16 +175,16 @@
     <div class="rights-card">
       <div class="rights-card-header yellow">
         <span class="rights-card-icon">📋</span>
-        <span class="rights-card-title">Обов'язки громадянина</span>
+        <span class="rights-card-title" data-uk="Обов'язки громадянина" data-en="Duties of a citizen">Обов'язки громадянина</span>
       </div>
       <div class="rights-card-body">
         <ul class="rights-list">
-          <li>Дотримуватись Конституції та законів Ш.Н.У.Р.</li>
-          <li>Шанувати державні символи</li>
-          <li>Поважати права інших громадян</li>
-          <li>Сплачувати податки встановлені законом</li>
-          <li>Не завдавати шкоди природі та культурній спадщині</li>
-          <li>Діяти в інтересах держави та суспільства</li>
+          <li data-uk="Дотримуватись Конституції та законів Ш.Н.У.Р." data-en="Adhere to the Constitution and laws of S.P.U.R.">Дотримуватись Конституції та законів Ш.Н.У.Р.</li>
+          <li data-uk="Шанувати державні символи" data-en="Respect state symbols">Шанувати державні символи</li>
+          <li data-uk="Поважати права інших громадян" data-en="Respect the rights of other citizens">Поважати права інших громадян</li>
+          <li data-uk="Сплачувати податки встановлені законом" data-en="Pay taxes established by law">Сплачувати податки встановлені законом</li>
+          <li data-uk="Не завдавати шкоди природі та культурній спадщині" data-en="Not harm nature or cultural heritage">Не завдавати шкоди природі та культурній спадщині</li>
+          <li data-uk="Діяти в інтересах держави та суспільства" data-en="Act in the interests of the state and society">Діяти в інтересах держави та суспільства</li>
         </ul>
       </div>
     </div>
@@ -180,51 +192,51 @@
 
   <!-- Процес отримання -->
   <div class="process">
-    <p class="process-title">📜 Як отримати громадянство?</p>
+    <p class="process-title" data-uk="📜 Як отримати громадянство?" data-en="📜 How to obtain citizenship?">📜 Як отримати громадянство?</p>
     <div class="process-steps">
       <div class="process-step">
         <span class="step-num">01</span>
-        <p class="step-title">Заповни форму</p>
-        <p class="step-desc">Заповни заявку нижче на цій сторінці вказавши свої дані та мотивацію</p>
+        <p class="step-title" data-uk="Заповни форму" data-en="Fill out the form">Заповни форму</p>
+        <p class="step-desc" data-uk="Заповни заявку нижче на цій сторінці вказавши свої дані та мотивацію" data-en="Fill out the application below on this page with your details and motivation">Заповни заявку нижче на цій сторінці вказавши свої дані та мотивацію</p>
       </div>
       <div class="process-step">
         <span class="step-num">02</span>
-        <p class="step-title">Розгляд</p>
-        <p class="step-desc">Уряд Ш.Н.У.Р. розглядає заявку і приймає рішення</p>
+        <p class="step-title" data-uk="Розгляд" data-en="Review">Розгляд</p>
+        <p class="step-desc" data-uk="Уряд Ш.Н.У.Р. розглядає заявку і приймає рішення" data-en="The S.P.U.R. government reviews the application and makes a decision">Уряд Ш.Н.У.Р. розглядає заявку і приймає рішення</p>
       </div>
       <div class="process-step">
         <span class="step-num">03</span>
-        <p class="step-title">Відповідь</p>
-        <p class="step-desc">Ти отримаєш відповідь на вказаний email з рішенням</p>
+        <p class="step-title" data-uk="Відповідь" data-en="Response">Відповідь</p>
+        <p class="step-desc" data-uk="Ви отримаєте відповідь на вказаний email з рішенням" data-en="You will receive a response to the provided email with the decision">Ви отримаєте відповідь на вказаний email з рішенням</p>
       </div>
       <div class="process-step">
         <span class="step-num">04</span>
-        <p class="step-title">Затвердження</p>
-        <p class="step-desc">Гетьман офіційно надає громадянство після схвалення</p>
+        <p class="step-title" data-uk="Затвердження" data-en="Approval">Затвердження</p>
+        <p class="step-desc" data-uk="Гетьман офіційно надає громадянство після схвалення" data-en="The Hetman officially grants citizenship after approval">Гетьман офіційно надає громадянство після схвалення</p>
       </div>
     </div>
   </div>
 
   <!-- Форма -->
   <div class="form-wrap">
-    <p class="form-wrap-title">Заявка на громадянство</p>
-    <p class="form-wrap-subtitle">Заповніть форму нижче. Ваша заявка буде розглянута урядом Ш.Н.У.Р. і відповідь надійде на вказаний email.</p>
+    <p class="form-wrap-title" data-uk="Заявка на громадянство" data-en="Citizenship application">Заявка на громадянство</p>
+    <p class="form-wrap-subtitle" data-uk="Заповніть форму нижче. Ваша заявка буде розглянута урядом Ш.Н.У.Р. і відповідь надійде на вказаний email." data-en="Fill out the form below. Your application will be reviewed by the S.P.U.R. government and a response will be sent to the provided email.">Заповніть форму нижче. Ваша заявка буде розглянута урядом Ш.Н.У.Р. і відповідь надійде на вказаний email.</p>
 
-    <form action="https://formsubmit.co/spurofficial2022@gmail.com" method="POST">
+    <form action="https://formsubmit.co/s.p.u.r.official.republic@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Нова заявка на громадянство Ш.Н.У.Р." />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_next" value="https://spurmicronation.netlify.app/citizenship.html" />
 
-      <p class="form-section-title">Особисті дані</p>
+      <p class="form-section-title" data-uk="Особисті дані" data-en="Personal details">Особисті дані</p>
 
       <div class="form-grid">
         <div class="form-group">
-          <label class="form-label" for="firstName">Ім'я <span>*</span></label>
+          <label class="form-label" for="firstName" data-uk="Ім'я *" data-en="First name *">Ім'я <span>*</span></label>
           <input class="form-input" type="text" id="firstName" name="Ім'я" required placeholder="Ваше ім'я" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="lastName">Прізвище <span>*</span></label>
+          <label class="form-label" for="lastName" data-uk="Прізвище *" data-en="Last name *">Прізвище <span>*</span></label>
           <input class="form-input" type="text" id="lastName" name="Прізвище" required placeholder="Ваше прізвище" />
         </div>
       </div>
@@ -237,30 +249,30 @@
 
       <div class="form-grid">
         <div class="form-group">
-          <label class="form-label" for="age">Вік <span>*</span></label>
+          <label class="form-label" for="age" data-uk="Вік *" data-en="Age *">Вік <span>*</span></label>
           <input class="form-input" type="number" id="age" name="Вік" required min="1" max="100" placeholder="Ваш вік" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="country">Країна проживання <span>*</span></label>
+          <label class="form-label" for="country" data-uk="Країна проживання *" data-en="Country of residence *">Країна проживання <span>*</span></label>
           <input class="form-input" type="text" id="country" name="Країна" required placeholder="Наприклад: Фінляндія" />
         </div>
       </div>
 
       <hr class="form-divider" />
-      <p class="form-section-title">Додаткова інформація</p>
+      <p class="form-section-title" data-uk="Додаткова інформація" data-en="Additional information">Додаткова інформація</p>
 
       <div class="form-group">
-        <label class="form-label" for="languages">Якими мовами володієте?</label>
+        <label class="form-label" for="languages" data-uk="Якими мовами ви володієте?" data-en="What languages do you speak?">Якими мовами ви володієте?</label>
         <input class="form-input" type="text" id="languages" name="Мови" placeholder="Наприклад: українська, англійська, фінська" />
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="motivation">Чому хочете стати громадянином Ш.Н.У.Р.? <span>*</span></label>
+        <label class="form-label" for="motivation" data-uk="Чому хочете стати громадянином Ш.Н.У.Р.? *" data-en="Why do you want to become a citizen of S.P.U.R.? *">Чому хочете стати громадянином Ш.Н.У.Р.? <span>*</span></label>
         <textarea class="form-textarea" id="motivation" name="Мотивація" required placeholder="Розкажіть про свою мотивацію..."></textarea>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="skills">Які навички можете запропонувати державі?</label>
+        <label class="form-label" for="skills" data-uk="Які навички ви можете запропонувати державі?" data-en="What skills can you offer the state?">Які навички ви можете запропонувати державі?</label>
         <textarea class="form-textarea" id="skills" name="Навички" placeholder="Наприклад: програмування, дипломатія, дизайн..." style="min-height:90px;"></textarea>
       </div>
 
@@ -268,14 +280,14 @@
 
       <div class="checkbox-group">
         <input type="checkbox" id="agreeConstitution" name="Конституція" value="Так" required />
-        <label for="agreeConstitution">Я ознайомився з <a href="constitution.html" style="color:var(--green);">Конституцією Ш.Н.У.Р.</a> і зобов'язуюсь її дотримуватись <span style="color:#c0392b;">*</span></label>
+        <label for="agreeConstitution" data-uk="Я ознайомився з Конституцією Ш.Н.У.Р. і зобов'язуюсь її дотримуватись *" data-en="I have read the S.P.U.R. Constitution and undertake to comply with it *">Я ознайомився з <a href="constitution.html" style="color:var(--green);">Конституцією Ш.Н.У.Р.</a> і зобов'язуюсь її дотримуватись <span style="color:#c0392b;">*</span></label>
       </div>
       <div class="checkbox-group">
         <input type="checkbox" id="agreeValues" name="Цінності" value="Так" required />
-        <label for="agreeValues">Я поважаю цінності єдності, свободи та міжнародного співробітництва Ш.Н.У.Р. <span style="color:#c0392b;">*</span></label>
+        <label for="agreeValues" data-uk="Я поважаю цінності єдності, свободи та міжнародного співробітництва Ш.Н.У.Р. *" data-en="I respect the values of unity, freedom and international cooperation of S.P.U.R. *">Я поважаю цінності єдності, свободи та міжнародного співробітництва Ш.Н.У.Р. <span style="color:#c0392b;">*</span></label>
       </div>
 
-      <button type="submit" class="btn-submit">⚜ Подати заявку на громадянство</button>
+      <button type="submit" class="btn-submit" data-uk="⚜ Подати заявку на громадянство" data-en="⚜ Submit citizenship application">⚜ Подати заявку на громадянство</button>
     </form>
   </div>
 
@@ -283,7 +295,7 @@
 
 <footer>
   <div class="footer-logo">Ш.Н.У.Р.</div>
-  <p>© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
+  <p data-uk="© 2023–2026 Шкільна Народна Українська Республіка · Всі права захищено" data-en="© 2023–2026 School People's Ukrainian Republic · All rights reserved">© 2023–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
 </footer>
 
 </body>
