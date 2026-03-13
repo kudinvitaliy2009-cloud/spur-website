@@ -134,6 +134,16 @@
     }
   </style>
 </head>
+<script>
+  let currentLang = 'uk';
+  function toggleLang() {
+    currentLang = currentLang === 'uk' ? 'en' : 'uk';
+    document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+  }
+</script>
 <body>
 
 <nav>
@@ -142,46 +152,49 @@
     <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#about">Про нас</a></li>
-    <li><a href="index.html#news">Новини</a></li>
-    <li><a href="index.html#government">Уряд</a></li>
-    <li><a href="constitution.html">Конституція</a></li>
-    <li><a href="index.html#contact">Контакти</a></li>
+    <li><a href="index.html#about" data-uk="Про нас" data-en="About us">Про нас</a></li>
+    <li><a href="index.html#news" data-uk="Новини" data-en="News">Новини</a></li>
+    <li><a href="index.html#government" data-uk="Уряд" data-en="Government">Уряд</a></li>
+    <li><a href="constitution.html" data-uk="Конституція" data-en="Constitution">Конституція</a></li>
+    <li><a href="citizenship.html" data-uk="Громадянство" data-en="Citizenship">Громадянство</a></li>
+    <li><a href="relations.html" data-uk="Відносини" data-en="Relations">Відносини</a></li>
+    <li><a href="index.html#contact" data-uk="Контакти" data-en="Contacts">Контакти</a></li>
   </ul>
+  <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
 </nav>
 
 <div class="page-hero">
   <div class="page-hero-content">
     <div class="page-hero-icon">🌍</div>
-    <h1>Міжнародні відносини</h1>
-    <p>Шкільна Народна Українська Республіка · S.P.U.R.</p>
+    <h1 data-uk="Міжнародні відносини" data-en="International Relations">Міжнародні відносини</h1>
+    <p data-uk="Шкільна Народна Українська Республіка" data-en="School People's Ukrainian Republic">Шкільна Народна Українська Республіка</p>
   </div>
 </div>
 
 <div class="page-body">
-  <a href="index.html" class="back-btn">← Повернутись на головну</a>
+  <a href="index.html" class="back-btn" data-uk="← Повернутись на головну" data-en="← Back to home page">← Повернутись на головну</a>
 
   <div class="intro-box">
-    <p>Шкільна Народна Українська Республіка прагне до мирного співіснування та взаємного визнання з іншими мікродержавами світу. Наша зовнішня політика базується на принципах поваги, рівності та міжнародного співробітництва відповідно до Конституції Ш.Н.У.Р.</p>
+    <p data-uk="Шкільна Народна Українська Республіка прагне до мирного співіснування та взаємного визнання з іншими мікродержавами світу. Наша зовнішня політика базується на принципах поваги, рівності та міжнародного співробітництва відповідно до Конституції Ш.Н.У.Р." data-en="The School People's Ukrainian Republic strives for peaceful coexistence and mutual recognition with other micronations of the world. Our foreign policy is based on the principles of respect, equality and international cooperation in accordance with the S.P.U.R. Constitution.">Шкільна Народна Українська Республіка прагне до мирного співіснування та взаємного визнання з іншими мікродержавами світу. Наша зовнішня політика базується на принципах поваги, рівності та міжнародного співробітництва відповідно до Конституції Ш.Н.У.Р.</p>
   </div>
 
-  <p class="section-label">Дипломатія</p>
-  <h2 class="section-title">Визнані держави</h2>
+  <p class="section-label" data-uk="Дипломатія" data-en="Diplomacy">Дипломатія</p>
+  <h2 class="section-title" data-uk="Визнані держави" data-en="Recognized states">Визнані держави</h2>
   <div class="section-divider"></div>
 
   <!-- Статистика -->
   <div class="stats-row">
     <div class="stat-card">
       <span class="stat-num">2</span>
-      <span class="stat-label">Визнані держави</span>
+      <span class="stat-label" data-uk="Визнані держави" data-en="Recognized states">Визнані держави</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">1</span>
-      <span class="stat-label">Взаємне визнання</span>
+      <span class="stat-label" data-uk="Взаємне визнання" data-en="Mutual recognition">Взаємне визнання</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">1</span>
-      <span class="stat-label">Одностороннє визнання</span>
+      <span class="stat-label" data-uk="Одностороннє визнання" data-en="One-sided recognition">Одностороннє визнання</span>
     </div>
   </div>
 
@@ -193,28 +206,28 @@
       <div class="nation-card-header">
         <div class="nation-flag">🇺🇸</div>
         <div class="nation-header-text">
-          <div class="nation-name">Республіка Молосія</div>
+          <div class="nation-name" data-uk="Республіка Молосія" data-en="Republic of Molossia">Республіка Молосія</div>
           <div class="nation-name-en">Republic of Molossia</div>
         </div>
       </div>
       <div class="nation-card-body">
-        <span class="relation-badge badge-recognition">🤝 Визнання без дипломатичних зв'язків</span>
+        <span class="relation-badge badge-recognition" data-uk="🤝 Визнання без дипломатичних зв'язків" data-en="🤝 Recognition without diplomatic ties">🤝 Визнання без дипломатичних зв'язків</span>
         <div class="nation-info">
           <div class="nation-info-row">
-            <span class="nation-info-label">Розташування:</span>
-            <span class="nation-info-value">Невада, США</span>
+            <span class="nation-info-label" data-uk="Розташування:" data-en="Location:">Розташування:</span>
+            <span class="nation-info-value" data-uk="Невада, США" data-en="Nevada, USA">Невада, США</span>
           </div>
           <div class="nation-info-row">
-            <span class="nation-info-label">Заснована:</span>
+            <span class="nation-info-label" data-uk="Засновано:" data-en="Founded:">Засновано:</span>
             <span class="nation-info-value">1977</span>
           </div>
           <div class="nation-info-row">
-            <span class="nation-info-label">Керівник:</span>
-            <span class="nation-info-value">Президент Кевін Бо</span>
+            <span class="nation-info-label" data-uk="Керівник:" data-en="Ruler:">Керівник:</span>
+            <span class="nation-info-value" data-uk="Президент Кевін Бо" data-en="President Kevin Baugh">Президент Кевін Бо</span>
           </div>
         </div>
-        <p class="nation-desc">Молосія — одна з найвідоміших мікродержав світу, розташована на території штату Невада. Республіка визнає Ш.Н.У.Р., проте без встановлення офіційних дипломатичних зв'язків.</p>
-        <a href="https://molossia.org" target="_blank" class="nation-link">🌐 Офіційний сайт →</a>
+        <p class="nation-desc" data-uk="Молосія — одна з найвідоміших мікродержав світу, розташована на території штату Невада. Республіка визнає Ш.Н.У.Р., проте без встановлення офіційних дипломатичних зв'язків." data-en="Molossia is one of the most well-known micronations in the world, located in the state of Nevada. The Republic recognizes S.P.U.R., but without establishing official diplomatic ties.">Молосія — одна з найвідоміших мікродержав світу, розташована на території штату Невада. Республіка визнає Ш.Н.У.Р., проте без встановлення офіційних дипломатичних зв'язків.</p>
+        <a href="https://molossia.org" target="_blank" class="nation-link" data-uk="🌐 Офіційний сайт →" data-en="🌐 Official website →">🌐 Офіційний сайт →</a>
       </div>
     </div>
 
@@ -223,12 +236,12 @@
       <div class="nation-card-header">
         <div class="nation-flag">👑</div>
         <div class="nation-header-text">
-          <div class="nation-name">Королівство Телурія</div>
+          <div class="nation-name" data-uk="Королівство Телурія" data-en="Kingdom of Telluria">Королівство Телурія</div>
           <div class="nation-name-en">Kingdom of Telluria</div>
         </div>
       </div>
       <div class="nation-card-body">
-        <span class="relation-badge badge-mutual">⚜ Взаємне визнання</span>
+        <span class="relation-badge badge-mutual" data-uk="⚜ Взаємне визнання" data-en="⚜ Mutual recognition">⚜ Взаємне визнання</span>
         <div class="nation-info">
           <div class="nation-info-row">
             <span class="nation-info-label" data-uk="Розташування:" data-en="Location:">Розташування:</span>
@@ -242,13 +255,10 @@
     <span class="nation-info-label" data-uk="Керівник:" data-en="Ruler:">Керівник:</span>
     <span class="nation-info-value" data-uk="Іван I" data-en="Ivan I">Іван I</span>
   </div>
-  <div class="nation-info-row">
-    <span class="nation-info-label" data-uk="Відносини:" data-en="Relations:">Відносини:</span>
-    <span class="nation-info-value" data-uk="Двостороннє визнання" data-en="Mutual recognition">Двостороннє визнання</span>
   </div>
 </div>
         <p class="nation-desc" class="nation-desc" data-uk="Королівство Телурія — молода мікромонархія, заснована 29 жовтня 2025 року поблизу міста Жовті Води в Україні. Очолює державу монарх Іван I. Ш.Н.У.Р. та Королівство Телурія встановили взаємне визнання на засадах рівності та поваги суверенітету обох держав." data-en="The Kingdom of Telluria is a young micro-monarchy, founded on October 29, 2025 near the city of Zhovti Vody in Ukraine. The state is headed by monarch Ivan I. S.P.U.R. and the Kingdom of Telluria have established mutual recognition based on equality and respect for the sovereignty of both states.">Королівство Телурія — молода мікромонархія, заснована 29 жовтня 2025 року поблизу міста Жовті Води в Україні. Очолює державу монарх Іван I. Ш.Н.У.Р. та Королівство Телурія встановили взаємне визнання на засадах рівності та поваги суверенітету обох держав.</p>
-        <a href="https://micronations.fandom.com/uk/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%96%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%D0%A2%D0%B5%D0%BB%D1%83%D1%80%D1%96%D1%8F" target="_blank" class="nation-link">📖 Детальніше →</a>
+        <a href="https://micronations.fandom.com/uk/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%96%D0%B2%D1%81%D1%82%D0%B2%D0%BE_%D0%A2%D0%B5%D0%BB%D1%83%D1%80%D1%96%D1%8F" target="_blank" class="nation-link" data-uk="📖 Детальніше →" data-en="📖 Learn more →">📖 Детальніше →</a>
       </div>
     </div>
 
@@ -256,34 +266,34 @@
 
   <!-- Принципи зовнішньої політики -->
   <div class="principles">
-    <p class="principles-title">⚜ Принципи зовнішньої політики Ш.Н.У.Р.</p>
+    <p class="principles-title" data-uk="⚜ Принципи зовнішньої політики Ш.Н.У.Р." data-en="⚜ Foreign policy principles of S.P.U.R.">⚜ Принципи зовнішньої політики Ш.Н.У.Р.</p>
     <div class="principles-grid">
       <div class="principle">
         <span class="principle-icon">🕊️</span>
         <div class="principle-text">
-          <p class="principle-title">Мир</p>
-          <p class="principle-desc">Ш.Н.У.Р. не має територіальних претензій і прагне до мирного співіснування з усіма державами.</p>
+          <p class="principle-title" data-uk="Мир" data-en="Peace">Мир</p>
+          <p class="principle-desc" data-uk="Ш.Н.У.Р. не має територіальних претензій і прагне до мирного співіснування з усіма державами." data-en="S.P.U.R. has no territorial claims and strives for peaceful coexistence with all states.">Ш.Н.У.Р. не має територіальних претензій і прагне до мирного співіснування з усіма державами.</p>
         </div>
       </div>
       <div class="principle">
         <span class="principle-icon">🤝</span>
         <div class="principle-text">
-          <p class="principle-title">Рівність</p>
-          <p class="principle-desc">Всі мікродержави рівні незалежно від розміру чи кількості громадян.</p>
+          <p class="principle-title" data-uk="Рівність" data-en="Equality">Рівність</p>
+          <p class="principle-desc" data-uk="Всі мікродержави рівні незалежно від розміру чи кількості громадян." data-en="All micronations are equal regardless of size or number of citizens.">Всі мікродержави рівні незалежно від розміру чи кількості громадян.</p>
         </div>
       </div>
       <div class="principle">
         <span class="principle-icon">🌍</span>
         <div class="principle-text">
-          <p class="principle-title">Співробітництво</p>
-          <p class="principle-desc">Ш.Н.У.Р. відкрита до встановлення дипломатичних відносин з новими мікродержавами.</p>
+          <p class="principle-title" data-uk="Співробітництво" data-en="Cooperation">Співробітництво</p>
+          <p class="principle-desc" data-uk="Ш.Н.У.Р. відкрита до встановлення дипломатичних відносин з новими мікродержавами." data-en="S.P.U.R. is open to establishing diplomatic relations with new micronations.">Ш.Н.У.Р. відкрита до встановлення дипломатичних відносин з новими мікродержавами.</p>
         </div>
       </div>
       <div class="principle">
-        <span class="principle-icon">📜</span>
+        <span class="principle-icon">🛡️</span>
         <div class="principle-text">
-          <p class="principle-title">Право</p>
-          <p class="principle-desc">Усі міжнародні договори підписуються Гетьманом відповідно до Конституції.</p>
+          <p class="principle-title" data-uk="Суверенітет" data-en="Sovereignty">Суверенітет</p>
+          <p class="principle-desc" data-uk="Ш.Н.У.Р. поважає суверенітет усіх держав і очікує того ж у відповідь." data-en="S.P.U.R. respects the sovereignty of all states and expects the same in return.">Ш.Н.У.Р. поважає суверенітет усіх держав і очікує того ж у відповідь.</p>
         </div>
       </div>
     </div>
@@ -293,7 +303,7 @@
 
 <footer>
   <div class="footer-logo">Ш.Н.У.Р.</div>
-  <p>© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
+  <p data-uk="© 2023–2026 Шкільна Народна Українська Республіка · Всі права захищено" data-en="© 2023–2026 School People's Ukrainian Republic · All rights reserved">>© 2023–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
 </footer>
 
 </body>
