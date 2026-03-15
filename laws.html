@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Архів законів | Ш.Н.У.Р.</title>
+  <meta name="description" content="Архів законопроектів Шкільної Народної Української Республіки." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:#2d7a2d; --green2:#1e5c1e; --yellow:#f5d442;
+      --blue:#7ec8e3; --white:#fffef5; --dark:#1a2e1a; --gray:#4a5e4a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--white); color: var(--dark); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 70px;
+      background: rgba(29,58,29,0.97); backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--yellow);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo .abbr { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 900; color: var(--yellow); letter-spacing: 0.12em; }
+    .nav-logo .full-name { font-family: 'Cinzel', serif; font-size: 0.62rem; color: rgba(255,255,255,0.5); line-height: 1.4; max-width: 190px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.73rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--yellow); }
+
+    .page-hero { background: var(--green); padding: 140px 2rem 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: var(--yellow); clip-path: polygon(0 60%, 100% 20%, 100% 100%, 0% 100%); }
+    .page-hero-content { position: relative; z-index: 2; }
+    .page-hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem,5vw,4rem); font-weight: 900; color: var(--white); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .page-hero p { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--white); letter-spacing: 0.2em; text-transform: uppercase; background: rgba(0,0,0,0.2); display: inline-block; padding: 0.4rem 1.2rem; border-radius: 2px; margin-top: 0.5rem; }
+
+    .page-body { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+
+    .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; margin-bottom: 3rem; transition: gap 0.2s; }
+    .back-btn:hover { gap: 0.75rem; }
+
+    /* Статистика */
+    .stats-row { display: flex; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .stat-card { flex: 1; min-width: 120px; background: var(--green); color: var(--white); border-radius: 4px; padding: 1.25rem; text-align: center; }
+    .stat-num { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; color: var(--yellow); display: block; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.3rem; display: block; }
+
+    /* Пошук і фільтр */
+    .filter-bar { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .search-input {
+      flex: 1; min-width: 200px; padding: 0.85rem 1rem;
+      border: 2px solid rgba(45,122,45,0.2); border-radius: 2px;
+      font-family: 'Raleway', sans-serif; font-size: 0.95rem;
+      color: var(--dark); background: var(--white); outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--green); }
+    .filter-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .filter-btn {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.5rem 1rem; border-radius: 2px;
+      border: 2px solid rgba(45,122,45,0.3); background: transparent;
+      color: var(--gray); cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--green); color: var(--green); }
+    .filter-btn.active { background: var(--green); color: var(--white); border-color: var(--green); }
+
+    /* Картки законів */
+    .laws-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .law-card {
+      background: var(--white); border: 1px solid rgba(45,122,45,0.15);
+      border-left: 4px solid var(--green); border-radius: 0 4px 4px 0;
+      overflow: hidden; transition: box-shadow 0.2s;
+    }
+    .law-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .law-card.project { border-left-color: var(--yellow); }
+
+    .law-header {
+      padding: 1.25rem 1.5rem; display: flex;
+      align-items: center; justify-content: space-between;
+      gap: 1rem; cursor: pointer; user-select: none;
+    }
+    .law-header-left { display: flex; align-items: center; gap: 1rem; flex: 1; }
+    .law-num {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--green); flex-shrink: 0;
+      background: rgba(45,122,45,0.08); padding: 0.3rem 0.6rem; border-radius: 2px;
+    }
+    .law-card.project .law-num { color: #8a7000; background: rgba(245,212,66,0.2); }
+    .law-title { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700; color: var(--dark); }
+    .law-meta { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; flex-wrap: wrap; }
+    .law-date { font-size: 0.78rem; color: var(--gray); }
+    .law-author { font-size: 0.78rem; color: var(--gray); }
+
+    .status-badge {
+      font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 2px;
+    }
+    .badge-approved { background: rgba(45,122,45,0.1); color: var(--green); border: 1px solid rgba(45,122,45,0.3); }
+    .badge-project { background: rgba(245,212,66,0.2); color: #8a7000; border: 1px solid rgba(245,212,66,0.5); }
+    .badge-cancelled { background: rgba(200,50,50,0.1); color: #c0392b; border: 1px solid rgba(200,50,50,0.3); }
+
+    .law-toggle { font-size: 0.8rem; color: var(--green); flex-shrink: 0; transition: transform 0.2s; }
+    .law-card.open .law-toggle { transform: rotate(180deg); }
+
+    .law-body {
+      display: none; padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid rgba(45,122,45,0.1);
+      padding-top: 1.25rem;
+    }
+    .law-card.open .law-body { display: block; }
+    .law-body p { font-size: 0.92rem; line-height: 1.8; color: var(--gray); }
+    .law-body-empty { font-style: italic; color: rgba(74,94,74,0.5); font-size: 0.85rem; }
+
+    .no-results { text-align: center; padding: 3rem; color: var(--gray); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em; display: none; }
+
+    footer { background: #111a11; padding: 2rem; text-align: center; border-top: 2px solid var(--yellow); }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 900; color: var(--yellow); letter-spacing: 0.2em; margin-bottom: 0.5rem; }
+    footer p { font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-logo .full-name { display: none; }
+      .nav-links { display: none; }
+      .page-body { padding: 3rem 1.5rem 4rem; }
+      .law-header { flex-wrap: wrap; }
+      .law-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="abbr">Ш.Н.У.Р.</span>
+    <span class="full-name">Шкільна Народна<br/>Українська Республіка</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about" data-uk="Про нас" data-en="About">Про нас</a></li>
+    <li><a href="index.html#news" data-uk="Новини" data-en="News">Новини</a></li>
+    <li><a href="index.html#government" data-uk="Уряд" data-en="Government">Уряд</a></li>
+    <li><a href="constitution.html" data-uk="Конституція" data-en="Constitution">Конституція</a></li>
+    <li><a href="citizenship.html" data-uk="Громадянство" data-en="Citizenship">Громадянство</a></li>
+    <li><a href="relations.html" data-uk="Відносини" data-en="Relations">Відносини</a></li>
+    <li><a href="laws.html" data-uk="Закони" data-en="Laws">Закони</a></li>
+    <li><a href="index.html#contact" data-uk="Контакти" data-en="Contacts">Контакти</a></li>
+  </ul>
+  <button onclick="toggleLang()" id="langBtn" style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.1em;background:transparent;border:1px solid var(--yellow);color:var(--yellow);padding:0.3rem 0.75rem;border-radius:2px;cursor:pointer;">🇺🇦 UA</button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-icon">📜</div>
+    <h1 data-uk="Архів законів" data-en="Laws Archive">Архів законів</h1>
+    <p data-uk="Шкільна Народна Українська Республіка · S.P.U.R." data-en="School People's Ukrainian Republic · S.P.U.R.">Шкільна Народна Українська Республіка · S.P.U.R.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <a href="index.html" class="back-btn" data-uk="← Повернутись на головну" data-en="← Back to home">← Повернутись на головну</a>
+
+  <!-- Статистика -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-num">15</span>
+      <span class="stat-label" data-uk="Всього законів" data-en="Total laws">Всього законів</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">14</span>
+      <span class="stat-label" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">1</span>
+      <span class="stat-label" data-uk="Проєкт" data-en="Draft">Проєкт</span>
+    </div>
+  </div>
+
+  <!-- Пошук і фільтр -->
+  <div class="filter-bar">
+    <input class="search-input" type="text" id="searchInput" placeholder="Пошук по законах..." oninput="filterLaws()" />
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="setFilter('all', this)" data-uk="Всі" data-en="All">Всі</button>
+      <button class="filter-btn" onclick="setFilter('approved', this)" data-uk="✅ Затверджено" data-en="✅ Approved">✅ Затверджено</button>
+      <button class="filter-btn" onclick="setFilter('project', this)" data-uk="📋 Проєкт" data-en="📋 Draft">📋 Проєкт</button>
+    </div>
+  </div>
+
+  <!-- Список законів -->
+  <div class="laws-list" id="lawsList">
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">001</span>
+          <span class="law-title" data-uk="Призначення спікера" data-en="Appointment of the Speaker">Призначення спікера</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 19.06.2025</span>
+          <span class="law-author">✍️ Данило Суслов</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p class="law-body-empty" data-uk="Текст законопроекту не додано." data-en="Bill text not added.">Текст законопроекту не додано.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">002</span>
+          <span class="law-title" data-uk="Передача обов'язків від президента до прем'єр-міністра" data-en="Transfer of duties from president to prime minister">Передача обов'язків від президента до прем'єр-міністра</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 23.06.2025</span>
+          <span class="law-author">✍️ Дмитро Мазун</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="На випадок якщо президент відмовляється робити свої обов'язки або робить відставку до кінця свого строку, його повноваження буде передані до прем'єр-міністра." data-en="In the event that the president refuses to perform their duties or resigns before the end of their term, their powers shall be transferred to the prime minister.">На випадок якщо президент відмовляється робити свої обов'язки або робить відставку до кінця свого строку, його повноваження буде передані до прем'єр-міністра.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">003</span>
+          <span class="law-title" data-uk="Про прийняття гімну Ш.Н.У.Р." data-en="On the adoption of the S.P.U.R. anthem">Про прийняття гімну Ш.Н.У.Р.</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 24.06.2025</span>
+          <span class="law-author">✍️ Данило Суслов</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p class="law-body-empty" data-uk="Текст законопроекту не додано." data-en="Bill text not added.">Текст законопроекту не додано.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">004</span>
+          <span class="law-title" data-uk="Про права та обов'язки громадянина" data-en="On the rights and duties of a citizen">Про права та обов'язки громадянина</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 09.07.2025</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект 004 є частиною пакету законів. Направлений на створення, організацію, підтримку громадянства та громадян республіки." data-en="Bill 004 is part of a package of laws. Aimed at creating, organizing and supporting citizenship and citizens of the republic.">Законопроект 004 є частиною пакету законів. Направлений на створення, організацію, підтримку громадянства та громадян республіки.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">005</span>
+          <span class="law-title" data-uk="Податковий кодекс" data-en="Tax Code">Податковий кодекс</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 22.07.2025</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект 005 спрямований на створення бюджету країни, створення податкової системи та розширює права громадян." data-en="Bill 005 is aimed at creating the country's budget, establishing a tax system and expanding citizens' rights.">Законопроект 005 спрямований на створення бюджету країни, створення податкової системи та розширює права громадян.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">006</span>
+          <span class="law-title" data-uk="Громадянство Ш.Н.У.Р." data-en="S.P.U.R. Citizenship">Громадянство Ш.Н.У.Р.</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 23.07.2025</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект 006 є частиною пакету законів спрямованих на створення та розширення громадського суспільства Ш.Н.У.Р." data-en="Bill 006 is part of a package of laws aimed at creating and expanding the civil society of S.P.U.R.">Законопроект 006 є частиною пакету законів спрямованих на створення та розширення громадського суспільства Ш.Н.У.Р.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">007</span>
+          <span class="law-title" data-uk="Судочинство в Ш.Н.У.Р." data-en="Judiciary in S.P.U.R.">Судочинство в Ш.Н.У.Р.</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 30.07.2025</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект 007 передбачає створення судової системи в Ш.Н.У.Р., забезпечення справедливості та правопорядку." data-en="Bill 007 provides for the establishment of a judicial system in S.P.U.R., ensuring justice and the rule of law.">Законопроект 007 передбачає створення судової системи в Ш.Н.У.Р., забезпечення справедливості та правопорядку.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">008</span>
+          <span class="law-title" data-uk="Додаток про права та обов'язки громадянина" data-en="Amendment on rights and duties of a citizen">Додаток про права та обов'язки громадянина</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 29.12.2025</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект №004 має недостатньо конкретних прав та обов'язків. Законопроект №008 має на меті виправити та покращити загальносуспільні права в Ш.Н.У.Р." data-en="Bill No.004 has insufficient specific rights and duties. Bill No.008 aims to correct and improve general civil rights in S.P.U.R.">Законопроект №004 має недостатньо конкретних прав та обов'язків. Законопроект №008 має на меті виправити та покращити загальносуспільні права в Ш.Н.У.Р.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">009</span>
+          <span class="law-title" data-uk="Державні ідеології" data-en="State Ideologies">Державні ідеології</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 30.12.2025</span>
+          <span class="law-author">✍️ Дмитро Мазун</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Законопроект 009 створений для обмеження певних політичних ідеологій. Метою є гарантування неможливості створення політичної сили деструктивних ідеологій." data-en="Bill 009 was created to restrict certain political ideologies. The aim is to guarantee the impossibility of creating a political force of destructive ideologies.">Законопроект 009 створений для обмеження певних політичних ідеологій. Метою є гарантування неможливості створення політичної сили деструктивних ідеологій.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">010</span>
+          <span class="law-title" data-uk="Мікродержавний реєстр громадян" data-en="Micronational Citizens Registry">Мікродержавний реєстр громадян</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 10.01.2026</span>
+          <span class="law-author">✍️ Віталій Кудін</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Цей законопроект включає загальні положення реєстра, хто управляє реєстром та дані й статус громадянства, які будуть записані до реєстру Ш.Н.У.Р." data-en="This bill includes general provisions of the registry, who manages the registry and the data and citizenship status to be recorded in the S.P.U.R. registry.">Цей законопроект включає загальні положення реєстра, хто управляє реєстром та дані й статус громадянства, які будуть записані до реєстру Ш.Н.У.Р.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">011</span>
+          <span class="law-title" data-uk="Державний бюджет" data-en="State Budget">Державний бюджет</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 14.01.2026</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Згідно Законопроекту №005 «Податковий кодекс» в Ш.Н.У.Р. передбачається податки як джерело державного бюджету. Відповідно на 2026 рік гроші мають бути розподілені між міністерствами згідно закону №011." data-en="According to Bill No.005 'Tax Code', S.P.U.R. provides for taxes as a source of the state budget. Accordingly, for 2026, funds are to be distributed among ministries in accordance with law No.011.">Згідно Законопроекту №005 «Податковий кодекс» в Ш.Н.У.Р. передбачається податки як джерело державного бюджету. Відповідно на 2026 рік гроші мають бути розподілені між міністерствами згідно закону №011.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">012</span>
+          <span class="law-title" data-uk="Внесення змін до Конституції" data-en="Constitutional Amendments">Внесення змін до Конституції</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 22.01.2026</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Згідно державного устрою республіки влада поділена на 3 гілки влади, відповідно в конституції було представлено лише Законодавча та Виконавча влади. Тож для виправлення помилок та конкретизації прав судів запроваджується основні поправки в конституцію. Крім того внесені зміни та поправки у розділ 5 та 7." data-en="According to the state structure of the republic, power is divided into 3 branches. However, the constitution previously represented only the Legislative and Executive branches. Therefore, main amendments are being introduced to correct errors and specify the rights of courts. Changes and amendments were also made to sections 5 and 7.">Згідно державного устрою республіки влада поділена на 3 гілки влади, відповідно в конституції було представлено лише Законодавча та Виконавча влади. Тож для виправлення помилок та конкретизації прав судів запроваджується основні поправки в конституцію. Крім того внесені зміни та поправки у розділ 5 та 7.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">013</span>
+          <span class="law-title" data-uk="Про Прокуратуру" data-en="On the Prosecutor's Office">Про Прокуратуру</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 25.01.2026</span>
+          <span class="law-author">✍️ Віталій Кудін</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Цей законопроект включає загальні повноваження Генерального Прокурора, роботи законів та юридичного заснування прокуратури." data-en="This bill includes the general powers of the Prosecutor General, the operation of laws and the legal establishment of the prosecutor's office.">Цей законопроект включає загальні повноваження Генерального Прокурора, роботи законів та юридичного заснування прокуратури.</p>
+      </div>
+    </div>
+
+    <div class="law-card" data-status="approved">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">014</span>
+          <span class="law-title" data-uk="Регламент Сенату" data-en="Senate Regulations">Регламент Сенату</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 03.02.2026</span>
+          <span class="law-author">✍️ Микита Боренко</span>
+          <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Цей законопроект включає початок роботи, склад сенату, порядок роботи та голосування." data-en="This bill includes the commencement of work, composition of the senate, procedures for work and voting.">Цей законопроект включає початок роботи, склад сенату, порядок роботи та голосування.</p>
+      </div>
+    </div>
+
+    <div class="law-card project" data-status="project">
+      <div class="law-header" onclick="toggleLaw(this)">
+        <div class="law-header-left">
+          <span class="law-num">015</span>
+          <span class="law-title" data-uk="Про Антикорупційний Суд" data-en="On the Anti-Corruption Court">Про Антикорупційний Суд</span>
+        </div>
+        <div class="law-meta">
+          <span class="law-date">📅 13.03.2026</span>
+          <span class="law-author">✍️ Віталій Кудін</span>
+          <span class="status-badge badge-project" data-uk="Проєкт" data-en="Draft">Проєкт</span>
+        </div>
+        <span class="law-toggle">▼</span>
+      </div>
+      <div class="law-body">
+        <p data-uk="Цей законопроект включає загальні повноваження та функціонування Антикорупційного Суду та його голови АКС, як незалежного органу правосуддя у розгляді справ щодо корупції та службових злочинів у Ш.Н.У.Р." data-en="This bill includes the general powers and functioning of the Anti-Corruption Court and its chairman, as an independent judicial body in handling corruption and official crime cases in S.P.U.R.">Цей законопроект включає загальні повноваження та функціонування Антикорупційного Суду та його голови АКС, як незалежного органу правосуддя у розгляді справ щодо корупції та службових злочинів у Ш.Н.У.Р.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="no-results" id="noResults" data-uk="Законів не знайдено" data-en="No laws found">Законів не знайдено</div>
+</div>
+
+<footer>
+  <div class="footer-logo">Ш.Н.У.Р.</div>
+  <p data-uk="© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено" data-en="© 2022–2026 School People's Ukrainian Republic · All rights reserved">© 2022–2026 Шкільна Народна Українська Республіка · Всі права захищено</p>
+</footer>
+
+<script>
+  let currentLang = 'uk';
+  let currentFilter = 'all';
+
+  function toggleLang() {
+    currentLang = currentLang === 'uk' ? 'en' : 'uk';
+    document.getElementById('langBtn').textContent = currentLang === 'uk' ? '🇺🇦 UA' : '🇬🇧 EN';
+    document.querySelectorAll('[data-uk]').forEach(el => {
+      el.innerHTML = currentLang === 'uk' ? el.getAttribute('data-uk') : el.getAttribute('data-en');
+    });
+    document.getElementById('searchInput').placeholder = currentLang === 'uk' ? 'Пошук по законах...' : 'Search laws...';
+  }
+
+  function toggleLaw(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterLaws();
+  }
+
+  function filterLaws() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.law-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const status = card.getAttribute('data-status');
+      const text = card.innerText.toLowerCase();
+      const matchFilter = currentFilter === 'all' || status === currentFilter;
+      const matchSearch = text.includes(query);
+
+      if (matchFilter && matchSearch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  }
+</script>
+
+</body>
+</html>
