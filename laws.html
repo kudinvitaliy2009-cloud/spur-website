@@ -104,6 +104,9 @@
     .badge-project { background: rgba(245,212,66,0.2); color: #8a7000; border: 1px solid rgba(245,212,66,0.5); }
     .badge-cancelled { background: rgba(200,50,50,0.1); color: #c0392b; border: 1px solid rgba(200,50,50,0.3); }
 
+    .law-card.cancelled { border-left-color: #c0392b; }
+    .law-card.cancelled .law-num { color: #c0392b; background: rgba(200,50,50,0.08); }
+
     .law-toggle { font-size: 0.8rem; color: var(--green); flex-shrink: 0; transition: transform 0.2s; }
     .law-card.open .law-toggle { transform: rotate(180deg); }
 
@@ -167,7 +170,7 @@
   <!-- Статистика -->
   <div class="stats-row">
     <div class="stat-card">
-      <span class="stat-num">23</span>
+      <span class="stat-num">26</span>
       <span class="stat-label" data-uk="Всього законів" data-en="Total laws">Всього законів</span>
     </div>
     <div class="stat-card">
@@ -178,6 +181,10 @@
       <span class="stat-num">0</span>
       <span class="stat-label" data-uk="Проєкт" data-en="Draft">Проєкт</span>
     </div>
+    <div class="stat-card">
+      <span class="stat-num">1</span>
+      <span class="stay-label" data-uk="Відхилено" data-en="Cancelled">Відхилено</span>
+    </div>
   </div>
 
   <!-- Пошук і фільтр -->
@@ -187,6 +194,7 @@
       <button class="filter-btn active" onclick="setFilter('all', this)" data-uk="Всі" data-en="All">Всі</button>
       <button class="filter-btn" onclick="setFilter('approved', this)" data-uk="✅ Затверджено" data-en="✅ Approved">✅ Затверджено</button>
       <button class="filter-btn" onclick="setFilter('project', this)" data-uk="📋 Проєкт" data-en="📋 Draft">📋 Проєкт</button>
+      <button class="filter-btn" onclick="setFilter('cancelled', this)" data-uk="❌ Відхилено" data-en="❌ Rejected">❌ Відхилено</button>
     </div>
   </div>
 
@@ -614,6 +622,44 @@
     <div class="law-header-left">
       <span class="law-num">023</span>
       <span class="law-title" data-uk="Виправлення колізії щодо громадянства та податків" data-en="Resolving conflicts concerning citizenship and taxes">Виправлення колізії щодо громадянства та податків</span>
+    </div>
+    <div class="law-meta">
+      <span class="law-date">📅 17.09.2026</span>
+      <span class="law-author" data-uk="✍️ Микита Боренко" data-en="✍️ Mykyta Borenko">✍️ Микита Боренко</span>
+      <span class="status-badge badge-approved" data-uk="Затверджено" data-en="Approved">Затверджено</span>
+    </div>
+      <span class="law-toggle">▼</span>
+  </div>
+  <div class="law-body">
+    <p data-uk="Цей закон існує для викорення суперечностей та забезпечення функціонування державного апарату." data-en="This law exists to eliminate contradictions and ensure the functioning of the state apparatus.">Цей закон існує для викорення суперечностей та забезпечення функціонування державного апарату.</p>
+    <a href="https://drive.google.com/file/d/1k97i-Y-KfXzTIlPyP9PS3ZxNnBLq-Uv3/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);text-decoration:none;border:1px solid rgba(45,122,45,0.3);padding:0.5rem 1rem;border-radius:2px;margin-top:1rem;transition:all 0.2s;" data-uk="📄 Переглянути документ →" data-en="📄 View document →">📄 Переглянути документ →</a>
+  </div>
+</div>
+
+<div class="law-card" data-status="cancelled">
+  <div class="law-header" onclick="toggleLaw(this)">
+    <div class="law-header-left">
+      <span class="law-num">24</span>
+      <span class="law-title" data-uk="Часткове скасування обмежень пов'язаних з Росією" data-en="Partial lifting of restrictions related to Russia.">Часткове скасування обмежень пов'язаних з Росією</span>
+    </div>
+    <div class="law-meta">
+      <span class="law-date">📅 28.09.2026</span>
+      <span class="law-author" data-uk="✍️ Данило Суслов" data-en="✍️ Danylo Suslov">✍️ Данило Суслов</span>
+      <span class="status-badge badge-cancelled" data-uk="Відхилено" data-en="Rejected">Відхилено</span>
+    </div>
+      <span class="law-toggle">▼</span>
+  </div>
+  <div class="law-body">
+    <p data-uk="Цей законопроект скасовує обмеження саме у мові. Він не включає символіку або пропаганду." data-en="This law repeals restrictions specifically regarding language. It does not include symbols or propaganda.">Цей законопроект скасовує обмеження саме у мові. Він не включає символіку або пропаганду.</p>
+    <a href="https://drive.google.com/file/d/1mflvUxLWPO4OxftlYcOmAxvAdAOnAUc2/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);text-decoration:none;border:1px solid rgba(45,122,45,0.3);padding:0.5rem 1rem;border-radius:2px;margin-top:1rem;transition:all 0.2s;" data-uk="📄 Переглянути документ →" data-en="📄 View document →">📄 Переглянути документ →</a>
+  </div>
+</div>
+
+<div class="law-card" data-status="approved">
+  <div class="law-header" onclick="toggleLaw(this)">
+    <div class="law-header-left">
+      <span class="law-num">003</span>
+      <span class="law-title" data-uk="ОНОВЛЕННЯ ЗАКОНУ 003 " data-en="Resolving conflicts concerning citizenship and taxes">Виправлення колізії щодо громадянства та податків</span>
     </div>
     <div class="law-meta">
       <span class="law-date">📅 17.09.2026</span>
